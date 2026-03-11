@@ -21,6 +21,31 @@ Current build status
 
 
 <table>
+    
+  <tr>
+    <td>Azure</td>
+    <td>
+      <details>
+        <summary>
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=27644&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libcudla-feedstock?branchName=main">
+          </a>
+        </summary>
+        <table>
+          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
+          <tbody><tr>
+              <td>linux_aarch64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=27644&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libcudla-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_" alt="variant">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
+    </td>
+  </tr>
 </table>
 
 Current release info
@@ -28,7 +53,8 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-libcudla--split-green.svg)](https://anaconda.org/conda-forge/libcudla-split) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libcudla-split.svg)](https://anaconda.org/conda-forge/libcudla-split) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libcudla-split.svg)](https://anaconda.org/conda-forge/libcudla-split) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libcudla-split.svg)](https://anaconda.org/conda-forge/libcudla-split) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libcudla-green.svg)](https://anaconda.org/conda-forge/libcudla) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libcudla.svg)](https://anaconda.org/conda-forge/libcudla) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libcudla.svg)](https://anaconda.org/conda-forge/libcudla) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libcudla.svg)](https://anaconda.org/conda-forge/libcudla) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libcudla--dev-green.svg)](https://anaconda.org/conda-forge/libcudla-dev) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libcudla-dev.svg)](https://anaconda.org/conda-forge/libcudla-dev) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libcudla-dev.svg)](https://anaconda.org/conda-forge/libcudla-dev) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libcudla-dev.svg)](https://anaconda.org/conda-forge/libcudla-dev) |
 
 Installing libcudla
 ===================
@@ -40,41 +66,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `libcudla-split` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `libcudla, libcudla-dev` can be installed with `conda`:
 
 ```
-conda install libcudla-split
-```
-
-or with `mamba`:
-
-```
-mamba install libcudla-split
-```
-
-It is possible to list all of the versions of `libcudla-split` available on your platform with `conda`:
-
-```
-conda search libcudla-split --channel conda-forge
+conda install libcudla libcudla-dev
 ```
 
 or with `mamba`:
 
 ```
-mamba search libcudla-split --channel conda-forge
+mamba install libcudla libcudla-dev
+```
+
+It is possible to list all of the versions of `libcudla` available on your platform with `conda`:
+
+```
+conda search libcudla --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search libcudla --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search libcudla-split --channel conda-forge
+mamba repoquery search libcudla --channel conda-forge
 
-# List packages depending on `libcudla-split`:
-mamba repoquery whoneeds libcudla-split --channel conda-forge
+# List packages depending on `libcudla`:
+mamba repoquery whoneeds libcudla --channel conda-forge
 
-# List dependencies of `libcudla-split`:
-mamba repoquery depends libcudla-split --channel conda-forge
+# List dependencies of `libcudla`:
+mamba repoquery depends libcudla --channel conda-forge
 ```
 
 

@@ -2,7 +2,7 @@
 {% set version = "13.2.51" %}
 {% set libversion = "1.0.0" %}
 {% set abiversion = libversion.split('.')[0] %}
-{% set cuda_version = "13.1" %}
+{% set cuda_version = "13.2" %}
 {% set platform = "linux-x86_64" %}  # [linux64]
 {% set platform = "linux-sbsa" %}  # [aarch64]
 {% set target_name = "x86_64-linux" %}  # [linux64]
@@ -18,7 +18,7 @@ source:
   sha256: 5118b776567bb246d42730b489ec4b7906abf87569f0fafb0ab97c7cbe635bf5  # [aarch64]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not aarch64]
 
 requirements:

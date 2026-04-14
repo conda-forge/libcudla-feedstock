@@ -1,5 +1,5 @@
 {% set name = "libcudla" %}
-{% set version = "13.2.51" %}
+{% set version = "13.2.75" %}
 {% set libversion = "1.0.0" %}
 {% set abiversion = libversion.split('.')[0] %}
 {% set cuda_version = "13.2" %}
@@ -15,7 +15,7 @@ package:
 
 source:
   url: https://developer.download.nvidia.com/compute/cuda/redist/{{ name }}/{{ platform }}/{{ name }}-{{ platform }}-{{ version }}-archive.{{ extension }}  # [aarch64]
-  sha256: 5118b776567bb246d42730b489ec4b7906abf87569f0fafb0ab97c7cbe635bf5  # [aarch64]
+  sha256: 99ba5a1d5f781e03b80d00208aa16c21e569f1db2f9b01b3c6b3b921c43610a5  # [aarch64]
 
 build:
   number: 1

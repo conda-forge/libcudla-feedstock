@@ -1,25 +1,29 @@
 {% set name = "libcudla" %}
-{% set version = "13.3.29" %}
+{% set version = "13.4.49" %}
 {% set libversion = "1.0.0" %}
 {% set abiversion = libversion.split('.')[0] %}
-{% set cuda_version = "13.3" %}
+{% set cuda_version = "13.4" %}
 {% set platform = "linux-x86_64" %}  # [linux64]
 {% set platform = "linux-sbsa" %}  # [aarch64]
+{% set platform = "windows-arm64" %}  # [win and arm64]
 {% set target_name = "x86_64-linux" %}  # [linux64]
 {% set target_name = "sbsa-linux" %}  # [aarch64]
+{% set target_name = "arm64" %}  # [win and arm64]
 {% set extension = "tar.xz" %}  # [not win]
+{% set extension = "zip" %}  # [win]
 
 package:
   name: {{ name }}-split
   version: {{ version }}
 
 source:
-  url: https://developer.download.nvidia.com/compute/cuda/redist/{{ name }}/{{ platform }}/{{ name }}-{{ platform }}-{{ version }}-archive.{{ extension }}  # [aarch64]
-  sha256: db426590f53be48fb1c843e73c00dda08c7aeeacc29e3b01ce71e1e91e58d818  # [aarch64]
+  url: https://developer.download.nvidia.com/compute/cuda/redist/{{ name }}/{{ platform }}/{{ name }}-{{ platform }}-{{ version }}-archive.{{ extension }}  # [aarch64 or (win and arm64)]
+  sha256: 7b195c7366b6b60956e2fa3e8398328f942b33a3fc6daf33eda9f6693e327110  # [aarch64]
+  sha256: bf63fa0866cb20201f8ddb4636516b3e7af4ab1c3f85e70d769ed8e319876cf8  # [win and arm64]
 
 build:
   number: 0
-  skip: true  # [not aarch64]
+  skip: true  # [not (aarch64 or (win and arm64))]
 
 requirements:
   build:
@@ -35,6 +39,7 @@ outputs:
     files:
       - lib/libcudla.so.*                             # [linux]
       - targets/{{ target_name }}/lib/libcudla*.so.*  # [linux]
+      - Library\bin\cudla.dll                        # [win]
     requirements:
       build:
         - {{ compiler("c") }}
@@ -55,6 +60,7 @@ outputs:
         - test -f $PREFIX/targets/{{ target_name }}/lib/libcudla.so.{{ libversion }}        # [linux]
         - test -L $PREFIX/targets/{{ target_name }}/lib/libcudla.so.{{ abiversion }}        # [linux]
         - bash test-rpath.sh                                                                # [linux]
+        - if not exist %LIBRARY_BIN%\cudla.dll exit 1                                       # [win]
 
   - name: libcudla-dev
     build:
@@ -66,6 +72,8 @@ outputs:
       - targets/{{ target_name }}/include             # [linux]
       - targets/{{ target_name }}/lib/libcudla.so     # [linux]
       - targets/{{ target_name }}/lib/stubs           # [linux]
+      - Library\include                              # [win]
+      - Library\lib\{{ target_name }}                # [win]
     requirements:
       build:
         - {{ compiler("c") }}

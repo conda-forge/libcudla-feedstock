@@ -48,31 +48,73 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `libcudla, libcudla-dev` can be installed with `conda`:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda install libcudla libcudla-dev
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba install libcudla libcudla-dev
 ```
 
-It is possible to list all of the versions of `libcudla` available on your platform with `conda`:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add libcudla libcudla-dev
+# for installing globally
+pixi global install libcudla libcudla-dev
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `libcudla` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search libcudla --channel conda-forge
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba search libcudla --channel conda-forge
 ```
 
-Alternatively, `mamba repoquery` may provide more information:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search libcudla --channel conda-forge
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
 
 ```
 # Search all versions available on your platform:
@@ -84,6 +126,8 @@ mamba repoquery whoneeds libcudla --channel conda-forge
 # List dependencies of `libcudla`:
 mamba repoquery depends libcudla --channel conda-forge
 ```
+
+</details>
 
 
 About conda-forge

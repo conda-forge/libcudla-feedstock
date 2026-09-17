@@ -1,5 +1,5 @@
 {% set name = "libcudla" %}
-{% set version = "13.4.49" %}
+{% set version = "13.4.92" %}
 {% set libversion = "1.0.0" %}
 {% set abiversion = libversion.split('.')[0] %}
 {% set cuda_version = "13.4" %}
@@ -11,8 +11,8 @@
 {% set target_name = "arm64" %}  # [win and arm64]
 {% set extension = "tar.xz" %}  # [not win]
 {% set extension = "zip" %}  # [win]
-{% set sha256 = "7b195c7366b6b60956e2fa3e8398328f942b33a3fc6daf33eda9f6693e327110" %}  # [aarch64]
-{% set sha256 = "bf63fa0866cb20201f8ddb4636516b3e7af4ab1c3f85e70d769ed8e319876cf8" %}  # [win and arm64]
+{% set sha256 = "2842ab55ebcf92d3dafb8836f2952d84637ee7bec7072e49293aacdb44d0c7e6" %}  # [aarch64]
+{% set sha256 = "b6e6882488013086f9fee6370ed59ed4231b46b41c0c9ec4c60161164a85963b" %}  # [win and arm64]
 
 package:
   name: {{ name }}-split
@@ -23,7 +23,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [not (aarch64 or (win and arm64))]
 
 requirements:
